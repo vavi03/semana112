@@ -1,10 +1,25 @@
 var express = require('express');
 var app = express();
 
-app.get('/', function(req, res) {
-  res.send('Hola Mundo!');
+app.use(express.static('public'));
+
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/home.html');
+    
 });
 
-app.listen(3000, function() {
-  console.log('Aplicación ejemplo, escuchando el puerto 3000!');
+app.get('/sobre-mi', function (req, res) {
+    res.send('Hola soy Vavi \n Estudiante DMI');
+});
+
+app.get('/contacto', function (req, res) {
+    res.send('Instagram: vavi03');
+});
+
+app.get('/portafolio', function (req, res) {
+    res.send('Mi behance: https://www.behance.net/valra03040d');
+});
+
+app.listen(3000, function () {
+    console.log('Aplicación ejemplo, escuchando el puerto 3000!');
 });
